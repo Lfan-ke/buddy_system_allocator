@@ -192,7 +192,7 @@ pub struct LockedFrameAllocator<const ORDER: usize = 33>(Mutex<FrameAllocator<OR
 #[cfg(feature = "use_spin")]
 impl<const ORDER: usize> LockedFrameAllocator<ORDER> {
     /// Creates an empty heap
-    pub fn new() -> Self {
+    pub const fn new() -> Self {
         Self(Mutex::new(FrameAllocator::new()))
     }
 }
