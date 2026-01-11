@@ -17,7 +17,8 @@ license = "MIT"
 [features]
 default = ["alloc", "use_spin"]
 alloc = []
-soft_atomic_spin = ["spin/portable-atomic"]
+soft_atomic_spin_single_core = ["spin/portable-atomic", "portable-atomic/unsafe-assume-single-core"]
+soft_atomic_spin_critical_section = ["spin/portable-atomic", "portable-atomic/critical-section"]
 use_spin = ["spin/spin_mutex"]
 
 [dependencies.spin]
@@ -25,6 +26,11 @@ version = "0.10.0"
 optional = true
 default-features = false
 features = []
+
+[dependencies.portable-atomic]
+version = "1.13.0"
+optional = true
+default-features = false
 
 [dev-dependencies]
 criterion = "0.6.0"
